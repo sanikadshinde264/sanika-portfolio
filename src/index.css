@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-bg text-ink font-body antialiased transition-colors duration-300;
+}
+
+html.light body {
+  @apply bg-light text-inkLight;
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.25);
+}
+
+/* focus states */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #38BDF8;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: #263045;
+  border-radius: 8px;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-container {
+  @apply max-w-6xl mx-auto px-6 sm:px-8 lg:px-10;
+}
+
+.card-surface {
+  @apply bg-bg-card border border-white/5 shadow-card transition-all duration-300 ease-out;
+}
+.card-surface:hover {
+  @apply -translate-y-1 border-accent/30 shadow-glow;
+}
+html.light .card-surface {
+  @apply bg-light-card border-slate-200 shadow-sm;
+}
+html.light .card-surface:hover {
+  @apply border-accent/40;
+  box-shadow: 0 12px 30px -8px rgba(15, 23, 42, 0.12);
+}
+
+/* ---- Light-mode overrides for the shared dark-first token utilities ----
+   Rather than sprinkling dark:/light: variants across every component,
+   we flip the small set of semantic tokens the whole site is built from. */
+html.light .text-ink { color: #0F172A; }
+html.light .text-ink-muted { color: #475569; }
+html.light .bg-bg { background-color: #F7F9FC; }
+html.light .bg-bg-secondary { background-color: #FFFFFF; }
+html.light .bg-bg-card { background-color: #FFFFFF; }
+html.light .border-white\/5 { border-color: rgba(15, 23, 42, 0.08); }
+html.light .border-white\/10 { border-color: rgba(15, 23, 42, 0.12); }
+html.light .divide-white\/5 > * + * { border-color: rgba(15, 23, 42, 0.08); }
+html.light .bg-white\/5 { background-color: rgba(15, 23, 42, 0.04); }
+html.light .hover\:bg-white\/5:hover { background-color: rgba(15, 23, 42, 0.05); }
+html.light .from-bg { --tw-gradient-from: #F7F9FC; }
+html.light .to-bg-secondary { --tw-gradient-to: #FFFFFF; }
+html.light .bg-bg\/80 { background-color: rgba(247, 249, 252, 0.8); }
+html.light .bg-bg-card\/95 { background-color: rgba(255, 255, 255, 0.95); }
+html.light .text-ink-muted\/70,
+html.light .text-ink-muted\/60,
+html.light .text-ink-muted\/40 { color: #475569; }
+html.light .placeholder\:text-ink-muted\/60::placeholder { color: #94A3B8; }

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sanika Shinde | Software Developer | Python | Java | Data Analytics</title>
+    <meta
+      name="description"
+      content="Portfolio of Sanika Shinde, a Computer Science Engineering student and software developer specializing in Python, Java, SQL, data analytics, AI, and machine learning."
+    />
+    <meta name="author" content="Sanika Shinde" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sanika Shinde | Software Developer | Python | Java | Data Analytics" />
+    <meta
+      property="og:description"
+      content="Portfolio of Sanika Shinde, a Computer Science Engineering student and software developer specializing in Python, Java, SQL, data analytics, AI, and machine learning."
+    />
+    <meta property="og:image" content="/og-image.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Prevent theme flash on load: read persisted/preferred theme before paint -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('portfolio-theme');
+          var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          if (theme === 'light') document.documentElement.classList.add('light');
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
