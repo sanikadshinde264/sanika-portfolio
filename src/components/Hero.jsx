@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Github, Linkedin, Download, ArrowRight } from 'lucide-react';
+import { Download, ArrowRight } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { profile } from '../data/profile';
 
 const LEETCODE_ICON = (
@@ -16,15 +17,20 @@ const CODECHEF_ICON = (
 
 export default function Hero() {
   const [photoFailed, setPhotoFailed] = useState(false);
+
   const initials = profile.name
     .split(' ')
     .map((n) => n[0])
     .join('');
 
   return (
-    <section id="home" className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
-      {/* background grid + glow */}
+    <section
+      id="home"
+      className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden"
+    >
+      {/* Background grid + glow */}
       <div className="absolute inset-0 bg-grid bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,black,transparent)] pointer-events-none" />
+
       <div className="absolute -top-40 right-0 w-[32rem] h-[32rem] bg-accent/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="section-container relative grid lg:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
@@ -34,22 +40,35 @@ export default function Hero() {
             {profile.badge}
           </span>
 
-          <h1 className="mt-6 font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] text-ink reveal" style={{ transitionDelay: '80ms' }}>
+          <h1
+            className="mt-6 font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] text-ink reveal"
+            style={{ transitionDelay: '80ms' }}
+          >
             Hi, I'm{' '}
             <span className="bg-gradient-to-r from-accent to-accent-soft bg-clip-text text-transparent">
               {profile.name}
             </span>
           </h1>
 
-          <p className="mt-4 text-lg sm:text-xl font-semibold text-ink-muted reveal" style={{ transitionDelay: '140ms' }}>
+          <p
+            className="mt-4 text-lg sm:text-xl font-semibold text-ink-muted reveal"
+            style={{ transitionDelay: '140ms' }}
+          >
             {profile.headline}
           </p>
 
-          <p className="mt-5 max-w-xl text-ink-muted leading-relaxed reveal" style={{ transitionDelay: '200ms' }}>
+          <p
+            className="mt-5 max-w-xl text-ink-muted leading-relaxed reveal"
+            style={{ transitionDelay: '200ms' }}
+          >
             {profile.heroDescription}
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3 reveal" style={{ transitionDelay: '260ms' }}>
+          {/* Buttons */}
+          <div
+            className="mt-8 flex flex-wrap items-center gap-3 reveal"
+            style={{ transitionDelay: '260ms' }}
+          >
             <a
               href="#projects"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-accent text-bg font-semibold text-sm hover:bg-accent/90 hover:-translate-y-0.5 transition-all duration-200 shadow-glow"
@@ -57,6 +76,7 @@ export default function Hero() {
               View My Projects
               <ArrowRight size={16} />
             </a>
+
             <a
               href={profile.resumePath}
               download
@@ -65,6 +85,7 @@ export default function Hero() {
               <Download size={16} />
               Download Resume
             </a>
+
             <a
               href="#contact"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-lg text-ink-muted font-semibold text-sm hover:text-ink transition-colors duration-200"
@@ -73,12 +94,32 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="mt-8 flex items-center gap-4 reveal" style={{ transitionDelay: '320ms' }}>
+          {/* Social links */}
+          <div
+            className="mt-8 flex items-center gap-4 reveal"
+            style={{ transitionDelay: '320ms' }}
+          >
             {[
-              { href: profile.socials.github, icon: <Github size={18} />, label: 'GitHub' },
-              { href: profile.socials.linkedin, icon: <Linkedin size={18} />, label: 'LinkedIn' },
-              { href: profile.socials.leetcode, icon: LEETCODE_ICON, label: 'LeetCode' },
-              { href: profile.socials.codechef, icon: CODECHEF_ICON, label: 'CodeChef' },
+              {
+                href: profile.socials.github,
+                icon: <FaGithub size={18} />,
+                label: 'GitHub',
+              },
+              {
+                href: profile.socials.linkedin,
+                icon: <FaLinkedin size={18} />,
+                label: 'LinkedIn',
+              },
+              {
+                href: profile.socials.leetcode,
+                icon: LEETCODE_ICON,
+                label: 'LeetCode',
+              },
+              {
+                href: profile.socials.codechef,
+                icon: CODECHEF_ICON,
+                label: 'CodeChef',
+              },
             ].map((s) => (
               <a
                 key={s.label}
@@ -89,6 +130,7 @@ export default function Hero() {
                 className="group relative p-2.5 rounded-full border border-white/10 text-ink-muted hover:text-accent hover:border-accent/40 transition-colors"
               >
                 {s.icon}
+
                 <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap px-2.5 py-1 rounded-md text-xs font-medium text-ink bg-bg-card border border-white/10 shadow-card opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
                   {s.label}
                 </span>
@@ -97,14 +139,17 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right column — signature portrait + floating workspace accents */}
-        <div className="relative h-[440px] hidden sm:block reveal" style={{ transitionDelay: '160ms' }}>
+        {/* Right column — portrait */}
+        <div
+          className="relative h-[440px] hidden sm:block reveal"
+          style={{ transitionDelay: '160ms' }}
+        >
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative w-full max-w-sm flex items-center justify-center">
-              {/* glow behind photo */}
+              {/* Glow behind photo */}
               <div className="absolute w-72 h-72 bg-accent/15 rounded-full blur-[70px]" />
 
-              {/* main photo frame */}
+              {/* Main photo frame */}
               <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-[2rem] overflow-hidden border border-white/10 shadow-glow bg-bg-card animate-float">
                 {!photoFailed ? (
                   <img

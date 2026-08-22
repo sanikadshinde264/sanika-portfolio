@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Github, Linkedin, Menu, X, Moon, Sun } from 'lucide-react';
+import { Menu, X, Moon, Sun } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { profile } from '../data/profile';
 
 const LINKS = [
@@ -20,8 +21,10 @@ export default function Navbar({ theme, toggleTheme }) {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
+
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
+
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -36,6 +39,7 @@ export default function Navbar({ theme, toggleTheme }) {
       }`}
     >
       <nav className="section-container flex items-center justify-between h-16">
+        {/* Logo / Name */}
         <a
           href="#home"
           className="font-display font-extrabold text-lg tracking-tight text-ink hover:text-accent transition-colors"
@@ -43,6 +47,7 @@ export default function Navbar({ theme, toggleTheme }) {
           {profile.name}
         </a>
 
+        {/* Desktop Navigation */}
         <ul className="hidden lg:flex items-center gap-7">
           {LINKS.map((link) => (
             <li key={link.href}>
@@ -56,7 +61,9 @@ export default function Navbar({ theme, toggleTheme }) {
           ))}
         </ul>
 
+        {/* Desktop Actions */}
         <div className="hidden lg:flex items-center gap-3">
+          {/* GitHub */}
           <a
             href={profile.socials.github}
             target="_blank"
@@ -64,8 +71,10 @@ export default function Navbar({ theme, toggleTheme }) {
             aria-label="GitHub profile"
             className="p-2 rounded-full text-ink-muted hover:text-ink hover:bg-white/5 transition-colors"
           >
-            <Github size={18} />
+            <FaGithub size={18} />
           </a>
+
+          {/* LinkedIn */}
           <a
             href={profile.socials.linkedin}
             target="_blank"
@@ -73,8 +82,10 @@ export default function Navbar({ theme, toggleTheme }) {
             aria-label="LinkedIn profile"
             className="p-2 rounded-full text-ink-muted hover:text-ink hover:bg-white/5 transition-colors"
           >
-            <Linkedin size={18} />
+            <FaLinkedin size={18} />
           </a>
+
+          {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
             aria-label="Toggle color theme"
@@ -84,7 +95,9 @@ export default function Navbar({ theme, toggleTheme }) {
           </button>
         </div>
 
+        {/* Mobile Actions */}
         <div className="flex lg:hidden items-center gap-2">
+          {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
             aria-label="Toggle color theme"
@@ -92,6 +105,8 @@ export default function Navbar({ theme, toggleTheme }) {
           >
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
+
+          {/* Mobile Menu Toggle */}
           <button
             onClick={() => setOpen((o) => !o)}
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -103,6 +118,7 @@ export default function Navbar({ theme, toggleTheme }) {
         </div>
       </nav>
 
+      {/* Mobile Navigation */}
       {open && (
         <div className="lg:hidden bg-bg-secondary border-t border-white/5">
           <ul className="section-container py-4 flex flex-col gap-1">
@@ -117,12 +133,27 @@ export default function Navbar({ theme, toggleTheme }) {
                 </a>
               </li>
             ))}
+
+            {/* Mobile Social Links */}
             <li className="flex gap-4 pt-3 mt-2 border-t border-white/5">
-              <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="p-2 text-ink-muted hover:text-ink">
-                <Github size={18} />
+              <a
+                href={profile.socials.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub profile"
+                className="p-2 text-ink-muted hover:text-ink"
+              >
+                <FaGithub size={18} />
               </a>
-              <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 text-ink-muted hover:text-ink">
-                <Linkedin size={18} />
+
+              <a
+                href={profile.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn profile"
+                className="p-2 text-ink-muted hover:text-ink"
+              >
+                <FaLinkedin size={18} />
               </a>
             </li>
           </ul>

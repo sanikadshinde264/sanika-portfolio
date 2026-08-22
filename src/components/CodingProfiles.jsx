@@ -1,4 +1,5 @@
-import { Github, Linkedin, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { profile } from '../data/profile';
 import Section from './Section';
 
@@ -19,13 +20,13 @@ const PROFILES = [
     name: 'GitHub',
     handle: '@sanikadshinde264',
     href: profile.socials.github,
-    icon: <Github size={22} />,
+    icon: <FaGithub size={22} />,
   },
   {
     name: 'LinkedIn',
     handle: 'Sanika Shinde',
     href: profile.socials.linkedin,
-    icon: <Linkedin size={22} />,
+    icon: <FaLinkedin size={22} />,
   },
   {
     name: 'LeetCode',
@@ -43,7 +44,10 @@ const PROFILES = [
 
 export default function CodingProfiles() {
   return (
-    <Section eyebrow="Find Me Online" title="Coding & Professional Profiles">
+    <Section
+      eyebrow="Find Me Online"
+      title="Coding & Professional Profiles"
+    >
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {PROFILES.map((p, i) => (
           <a
@@ -54,11 +58,21 @@ export default function CodingProfiles() {
             className="group card-surface rounded-xl p-6 flex flex-col items-start hover:-translate-y-1 hover:border-accent/30 transition-all duration-300 reveal"
             style={{ transitionDelay: `${i * 70}ms` }}
           >
-            <div className="p-3 rounded-lg bg-accent/10 text-accent">{p.icon}</div>
-            <h3 className="mt-4 font-display font-bold text-ink">{p.name}</h3>
-            <p className="text-sm text-ink-muted mt-0.5">{p.handle}</p>
+            <div className="p-3 rounded-lg bg-accent/10 text-accent">
+              {p.icon}
+            </div>
+
+            <h3 className="mt-4 font-display font-bold text-ink">
+              {p.name}
+            </h3>
+
+            <p className="text-sm text-ink-muted mt-0.5">
+              {p.handle}
+            </p>
+
             <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-accent group-hover:gap-1.5 transition-all">
-              Visit profile <ArrowUpRight size={13} />
+              Visit profile
+              <ArrowUpRight size={13} />
             </span>
           </a>
         ))}

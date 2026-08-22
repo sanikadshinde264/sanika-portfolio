@@ -1,4 +1,5 @@
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { profile } from '../data/profile';
 
 const LEETCODE_ICON = (
@@ -15,47 +16,96 @@ const CODECHEF_ICON = (
 
 export default function Footer() {
   const year = new Date().getFullYear();
+
   return (
     <footer className="border-t border-white/5 bg-bg-secondary">
       <div className="section-container py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
         <div className="text-center sm:text-left">
-          <p className="font-display font-bold text-ink">{profile.name}</p>
-          <p className="text-sm text-ink-muted mt-0.5">{profile.headline}</p>
+          <p className="font-display font-bold text-ink">
+            {profile.name}
+          </p>
+
+          <p className="text-sm text-ink-muted mt-0.5">
+            {profile.headline}
+          </p>
         </div>
 
         <div className="flex items-center gap-3">
-          <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="group relative p-2 rounded-full text-ink-muted hover:text-accent hover:bg-white/5 transition-colors">
-            <Linkedin size={17} />
+          {/* LinkedIn */}
+          <a
+            href={profile.socials.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="group relative p-2 rounded-full text-ink-muted hover:text-accent hover:bg-white/5 transition-colors"
+          >
+            <FaLinkedin size={17} />
+
             <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap px-2.5 py-1 rounded-md text-xs font-medium text-ink bg-bg-card border border-white/10 shadow-card opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
               LinkedIn
             </span>
           </a>
-          <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="group relative p-2 rounded-full text-ink-muted hover:text-accent hover:bg-white/5 transition-colors">
-            <Github size={17} />
+
+          {/* GitHub */}
+          <a
+            href={profile.socials.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="group relative p-2 rounded-full text-ink-muted hover:text-accent hover:bg-white/5 transition-colors"
+          >
+            <FaGithub size={17} />
+
             <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap px-2.5 py-1 rounded-md text-xs font-medium text-ink bg-bg-card border border-white/10 shadow-card opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
               GitHub
             </span>
           </a>
-          <a href={profile.socials.leetcode} target="_blank" rel="noopener noreferrer" aria-label="LeetCode" className="group relative p-2 rounded-full text-ink-muted hover:text-accent hover:bg-white/5 transition-colors">
+
+          {/* LeetCode */}
+          <a
+            href={profile.socials.leetcode}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LeetCode"
+            className="group relative p-2 rounded-full text-ink-muted hover:text-accent hover:bg-white/5 transition-colors"
+          >
             {LEETCODE_ICON}
+
             <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap px-2.5 py-1 rounded-md text-xs font-medium text-ink bg-bg-card border border-white/10 shadow-card opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
               LeetCode
             </span>
           </a>
-          <a href={profile.socials.codechef} target="_blank" rel="noopener noreferrer" aria-label="CodeChef" className="group relative p-2 rounded-full text-ink-muted hover:text-accent hover:bg-white/5 transition-colors">
+
+          {/* CodeChef */}
+          <a
+            href={profile.socials.codechef}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="CodeChef"
+            className="group relative p-2 rounded-full text-ink-muted hover:text-accent hover:bg-white/5 transition-colors"
+          >
             {CODECHEF_ICON}
+
             <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap px-2.5 py-1 rounded-md text-xs font-medium text-ink bg-bg-card border border-white/10 shadow-card opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
               CodeChef
             </span>
           </a>
-          <a href={`mailto:${profile.email}`} aria-label="Email" className="group relative p-2 rounded-full text-ink-muted hover:text-accent hover:bg-white/5 transition-colors">
+
+          {/* Email */}
+          <a
+            href={`mailto:${profile.email}`}
+            aria-label="Email"
+            className="group relative p-2 rounded-full text-ink-muted hover:text-accent hover:bg-white/5 transition-colors"
+          >
             <Mail size={17} />
+
             <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap px-2.5 py-1 rounded-md text-xs font-medium text-ink bg-bg-card border border-white/10 shadow-card opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
               Email
             </span>
           </a>
         </div>
       </div>
+
       <div className="border-t border-white/5">
         <p className="section-container py-4 text-center text-xs text-ink-muted">
           © {year} {profile.name}. All rights reserved.
