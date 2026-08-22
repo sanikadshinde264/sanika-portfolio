@@ -15,7 +15,7 @@ export default function ProjectImage({ project, className = '' }) {
 
   return (
     <img
-      src={`/projects/${project.id}.jpg`}
+      src={`${import.meta.env.BASE_URL}projects/${project.id}.jpg`}
       alt={`${project.title} preview`}
       onError={() => setFailed(true)}
       className={`${className} object-cover`}

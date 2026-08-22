@@ -21,8 +21,8 @@ export const profile = {
   phone: '+91 9763137148',
   location: 'Kolhapur, Maharashtra, India',
   dob: '26 March 2004',
-  resumePath: '/resume/SANIKA_SHINDE_9763137148.pdf',
-  photoPath: '/profile/sanika-photo.png',
+  resumePath: `${import.meta.env.BASE_URL}resume/SANIKA_SHINDE_9763137148.pdf`,
+  photoPath: `${import.meta.env.BASE_URL}profile/sanika-photo.png`,
   socials: {
     github: 'https://github.com/sanikadshinde264',
     linkedin: 'https://www.linkedin.com/in/sanikadshinde264',
