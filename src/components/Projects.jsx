@@ -3,6 +3,19 @@ import { projects, filters } from '../data/projects';
 import Section from './Section';
 import ProjectCard from './ProjectCard';
 import ProjectModal from './ProjectModal';
+import GithubCard from './GithubCard';
+
+const FEATURED_IDS = [
+  'er-insight-hub',
+  'interest-calculator',
+  'device-price-prediction',
+  'healthcare-chatbot',
+  'weather-insights',
+];
+
+const featuredProjects = FEATURED_IDS.map((id) =>
+  projects.find((p) => p.id === id)
+).filter(Boolean);
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -11,8 +24,8 @@ export default function Projects() {
   const visible = useMemo(
     () =>
       activeFilter === 'All'
-        ? projects
-        : projects.filter((p) => p.filterGroup === activeFilter),
+        ? featuredProjects
+        : featuredProjects.filter((p) => p.filterGroup === activeFilter),
     [activeFilter]
   );
 
@@ -49,6 +62,7 @@ export default function Projects() {
             style={{ transitionDelay: `${(i % 3) * 80}ms` }}
           />
         ))}
+        <GithubCard />
       </div>
 
       <ProjectModal project={selected} onClose={() => setSelected(null)} />

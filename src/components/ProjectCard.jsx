@@ -55,52 +55,62 @@ export default function ProjectCard({ project, onOpen, style }) {
         </div>
 
         <div className="mt-5 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            {project.github ? (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${project.title} GitHub repository`}
-                className="text-ink-muted hover:text-ink transition-colors"
-              >
-                <FaGithub size={17} />
-              </a>
-            ) : (
-              <button
-                type="button"
-                onClick={() =>
-                  setNotice('GitHub link isn\u2019t available yet.')
-                }
-                aria-label={`${project.title} GitHub repository`}
-                className="text-ink-muted/40 hover:text-ink-muted transition-colors"
-              >
-                <FaGithub size={17} />
-              </button>
-            )}
+          <div className="flex items-center gap-4">
+            <div className="relative group/tip">
+              {project.github ? (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${project.title} GitHub repository`}
+                  className="text-ink-muted hover:text-ink transition-colors"
+                >
+                  <FaGithub size={17} />
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() =>
+                    setNotice('GitHub link isn\u2019t available yet.')
+                  }
+                  aria-label={`${project.title} GitHub repository`}
+                  className="text-ink-muted/40 hover:text-ink-muted transition-colors"
+                >
+                  <FaGithub size={17} />
+                </button>
+              )}
+              <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-bg-card border border-white/10 px-2 py-1 text-[11px] font-medium text-ink opacity-0 group-hover/tip:opacity-100 transition-opacity duration-150 shadow-lg z-10">
+                GitHub
+              </span>
+            </div>
 
-            {project.liveDemo ? (
-              <a
-                href={project.liveDemo}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${project.title} live demo`}
-                className="text-ink-muted hover:text-ink transition-colors"
-              >
-                <ExternalLink size={17} />
-              </a>
-            ) : (
-              <button
-                type="button"
-                onClick={() =>
-                  setNotice('Live demo isn\u2019t available yet.')
-                }
-                aria-label={`${project.title} live demo`}
-                className="text-ink-muted/40 hover:text-ink-muted transition-colors"
-              >
-                <ExternalLink size={17} />
-              </button>
-            )}
+            <div className="relative group/tip">
+              {project.liveDemo ? (
+                <a
+                  href={project.liveDemo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${project.title} live demo`}
+                  className="text-ink-muted hover:text-ink transition-colors"
+                >
+                  <ExternalLink size={17} />
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() =>
+                    setNotice('Live demo isn\u2019t available yet.')
+                  }
+                  aria-label={`${project.title} live demo`}
+                  className="text-ink-muted/40 hover:text-ink-muted transition-colors"
+                >
+                  <ExternalLink size={17} />
+                </button>
+              )}
+              <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-bg-card border border-white/10 px-2 py-1 text-[11px] font-medium text-ink opacity-0 group-hover/tip:opacity-100 transition-opacity duration-150 shadow-lg z-10">
+                Live Demo
+              </span>
+            </div>
           </div>
 
           <button

@@ -177,7 +177,7 @@ export const projects = [
       'Responsive interface',
     ],
     github: 'https://github.com/sanikadshinde264/TaskMaster-Pro',
-    liveDemo: null,
+    liveDemo: 'https://sanikadshinde264.github.io/TaskMaster-Pro',
     thumbnailType: 'tasks',
   },
 ];

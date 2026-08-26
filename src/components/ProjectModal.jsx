@@ -43,7 +43,7 @@ export default function ProjectModal({ project, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-start sm:items-center justify-center p-0 sm:p-6 overflow-y-auto"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-0 sm:p-6"
       role="dialog"
       aria-modal="true"
       aria-labelledby="project-modal-title"
@@ -54,8 +54,8 @@ export default function ProjectModal({ project, onClose }) {
         aria-hidden="true"
       />
 
-      <div className="relative w-full sm:max-w-2xl bg-bg-card sm:rounded-2xl border border-white/10 my-0 sm:my-auto">
-        <div className="sticky top-0 flex justify-end p-4 bg-bg-card/95 backdrop-blur border-b border-white/5 sm:border-none sm:bg-transparent">
+      <div className="relative w-full h-full sm:h-auto sm:max-w-2xl sm:max-h-[85vh] bg-bg-card sm:rounded-2xl border border-white/10 overflow-y-auto">
+        <div className="sticky top-0 z-20 flex justify-end p-4 bg-bg-card/95 backdrop-blur border-b border-white/5">
           <button
             ref={closeRef}
             onClick={onClose}
@@ -66,7 +66,7 @@ export default function ProjectModal({ project, onClose }) {
           </button>
         </div>
 
-        <div className="px-6 sm:px-8 pb-8 -mt-10 sm:-mt-4">
+        <div className="px-6 sm:px-8 pb-8">
           <div className="aspect-[16/9] rounded-xl overflow-hidden mb-6">
             <ProjectImage
               project={project}
